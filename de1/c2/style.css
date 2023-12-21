@@ -1,0 +1,27 @@
+.container {
+    display: flex;
+}
+
+h1 {
+    color: orange;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+td,
+th {
+    border: 1px solid #333;
+    text-align: left;
+    padding: 8px;
+}
+
+thead {
+    background-color: orange;
+    color: #fff;
+}
+
+tbody {
+    background-color: gray;
+}
