@@ -66,5 +66,9 @@ if (isset($_GET['ma'])) {
             }
             ?>
         </table>
+        <form action="./search.php" method="get" class="search-wrapper">
+            <input type="text" name="param" />
+            <button type="submit" name="search">Tìm theo tên</button>
+        </form>
     </div>
 </body>
