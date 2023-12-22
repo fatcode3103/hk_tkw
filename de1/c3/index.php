@@ -8,45 +8,39 @@ if (isset($_GET['ma'])) {
 
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    </link>
-</head>
 
 <body>
     <div>
         <form action="./process.php" method="post">
             <div>
                 <label>Mã cán bộ</label>
-                <input name="ma" type="text" value="<?php echo isset($editUser['ma']) ? $editUser['ma'] : ''; ?>" />
+                <input name="ma" type="text" value="<?php echo $editUser['ma'] ?? ''; ?>" />
             </div>
             <div>
                 <label>CMND</label>
-                <input name="cmnd" type="number" value="<?php echo isset($editUser['cmnd']) ? $editUser['cmnd'] : ""; ?>" />
+                <input name="cmnd" type="number" value="<?php echo $editUser['cmnd'] ?? ''; ?>" />
             </div>
             <div>
                 <label>Họ</label>
-                <input name="ho" type="text" value="<?php echo isset($editUser['ho']) ? $editUser['ho'] : ""; ?>" />
+                <input name="ho" type="text" value="<?php echo $editUser['ho'] ?? ''; ?>" />
             </div>
             <div>
                 <label>Tên</label>
-                <input name="ten" type="text" value="<?php echo isset($editUser['ten']) ? $editUser['ten'] : ""; ?>" />
+                <input name="ten" type="text" value="<?php echo $editUser['ten'] ?? ''; ?>" />
             </div>
             <div>
                 <label>Tỉnh</label>
                 <select name="tinh">
-                    <option value="Hà nội" <?php if (isset($editUser['tinh']) && $editUser['tinh'] == 'Hà nội') echo 'selected'; ?>>Hà nội</option>
-                    <option value="Huế" <?php if (isset($editUser['tinh']) && $editUser['tinh'] == 'Huế') echo 'selected'; ?>>Huế</option>
-                    <option value="Hải phòng" <?php if (isset($editUser['tinh']) && $editUser['tinh'] == 'Hải phòng') echo 'selected'; ?>>Hải phòng</option>
-                </select>
+                    <<?php
+                        $locations = array("Hà nội", "Huế", "Hải phòng");
+                        foreach ($locations as $location) {
+                            $selected = (isset($editUser['tinh']) && $editUser['tinh'] == $location) ? 'selected' : '';
+                            echo "<option value='$location' $selected>$location</option>";
+                        }
+                        ?> </select>
             </div>
-            <button name="addNew" value="addNew" type="submit">Add new user</button>
-            <button name="edit" value="edit" type="submit"> Update user</button>
+            <button name="addNew" type="submit">Add new user</button>
+            <button name="edit" type="submit"> Update user</button>
         </form>
     </div>
     <div>
@@ -74,5 +68,3 @@ if (isset($_GET['ma'])) {
         </table>
     </div>
 </body>
-
-</html>
